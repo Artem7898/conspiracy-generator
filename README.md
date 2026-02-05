@@ -47,7 +47,7 @@
 
 ```bash
 # Клонировать репозиторий
-git clone https://github.com/yourusername/conspiracy-generator.git
+git clone https://github.com/Artem7898/conspiracy-generator
 cd conspiracy-generator
 
 # Запустить все сервисы
