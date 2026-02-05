@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  # Frontend - React app with Nginx
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: conspiracy-frontend
+    ports:
+      - "3000:80"
+    restart: unless-stopped
+    depends_on:
+      - backend
+    networks:
+      - conspiracy-network
+
+  # Backend - Python FastAPI
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: conspiracy-backend
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    environment:
+      - PYTHONUNBUFFERED=1
+    networks:
+      - conspiracy-network
+
+networks:
+  conspiracy-network:
+    driver: bridge
